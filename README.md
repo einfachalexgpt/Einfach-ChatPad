@@ -53,10 +53,8 @@ docker run --name einfachchatpad -d -v `pwd`/config.json:/usr/share/nginx/html/c
 
 Wenn du Funktionswünsche oder Fehlerberichte hast, besuche [feedback.chatpad.ai](https://feedback.chatpad.ai).
 
-Es scheint, dass du auf mehrere Probleme gestoßen bist, während du versuchst, dein Projekt mit Yarn zu bauen und auszuführen. Hier ist eine Übersicht der wichtigsten Probleme und wie du sie beheben kannst:
 
 ### 1. **Warnungen wegen verschiedener Paketmanager**
-   - Du verwendest sowohl `package-lock.json` (von npm) als auch `yarn.lock` (von Yarn). Dies kann zu Konflikten führen. Du solltest dich für einen Paketmanager (entweder npm oder Yarn) entscheiden, um Probleme bei der Auflösung von Abhängigkeiten zu vermeiden.
    
    **Lösung:**
    - Falls du Yarn verwendest, lösche die `package-lock.json`, um die Paketmanager nicht zu mischen:
@@ -67,27 +65,17 @@ Es scheint, dass du auf mehrere Probleme gestoßen bist, während du versuchst, 
    - Stelle sicher, dass du nur `yarn.lock` für die Verwaltung der Abhängigkeiten verwendest.
 
 ### 2. **Warnungen wegen doppelter Abhängigkeiten**
-   - Du hast doppelte Abhängigkeiten in den Abschnitten `dependencies` und `devDependencies`. Konkret:
-     - `@types/react` Version "18.0.28"
-     - `@types/react-dom` Version "18.0.11"
    
    **Lösung:**
    - Entferne die doppelten Einträge entweder aus `dependencies` oder `devDependencies` in deiner `package.json`, um diesen Konflikt zu beheben.
 
 ### 3. **Veraltete Browserslist-Datenbank**
-   - Der Fehler deutet darauf hin, dass deine `caniuse-lite` Datenbank veraltet ist, die von `Browserslist` für Kompatibilitätsprüfungen genutzt wird.
-
-   **Lösung:**
-   - Führe den folgenden Befehl aus, um `caniuse-lite` zu aktualisieren:
+  
      ```bash
      npx update-browserslist-db@latest
      ```
 
 ### 4. **Fehlende Datei Fehler (`ENOENT`)**
-   - Der kritische Fehler besagt, dass die Datei `Burger.js` aus dem Paket `@mantine/core` fehlt.
-   
-   **Lösung:**
-   - Dies könnte durch eine unvollständige Paketinstallation oder einen Fehler in der verwendeten Version verursacht worden sein. Installiere das Paket erneut:
      ```bash
      yarn remove @mantine/core
      yarn add @mantine/core
