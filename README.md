@@ -53,12 +53,60 @@ docker run --name einfachchatpad -d -v `pwd`/config.json:/usr/share/nginx/html/c
 
 Wenn du Funktionswünsche oder Fehlerberichte hast, besuche [feedback.chatpad.ai](https://feedback.chatpad.ai).
 
-## Mitwirken
+Es scheint, dass du auf mehrere Probleme gestoßen bist, während du versuchst, dein Projekt mit Yarn zu bauen und auszuführen. Hier ist eine Übersicht der wichtigsten Probleme und wie du sie beheben kannst:
 
-Dies ist eine React.js-Anwendung. Klone das Projekt, führe `npm i` und `npm start` aus, und schon bist du startklar.
+### 1. **Warnungen wegen verschiedener Paketmanager**
+   - Du verwendest sowohl `package-lock.json` (von npm) als auch `yarn.lock` (von Yarn). Dies kann zu Konflikten führen. Du solltest dich für einen Paketmanager (entweder npm oder Yarn) entscheiden, um Probleme bei der Auflösung von Abhängigkeiten zu vermeiden.
+   
+   **Lösung:**
+   - Falls du Yarn verwendest, lösche die `package-lock.json`, um die Paketmanager nicht zu mischen:
+     ```bash
+     rm package-lock.json
+     ```
+   
+   - Stelle sicher, dass du nur `yarn.lock` für die Verwaltung der Abhängigkeiten verwendest.
 
-## Credits
+### 2. **Warnungen wegen doppelter Abhängigkeiten**
+   - Du hast doppelte Abhängigkeiten in den Abschnitten `dependencies` und `devDependencies`. Konkret:
+     - `@types/react` Version "18.0.28"
+     - `@types/react-dom` Version "18.0.11"
+   
+   **Lösung:**
+   - Entferne die doppelten Einträge entweder aus `dependencies` oder `devDependencies` in deiner `package.json`, um diesen Konflikt zu beheben.
 
-- [ToDesktop](https://todesktop.com) – Eine einfache Möglichkeit, deine Web-App in eine schöne Desktop-App zu verwandeln
-- [DexieJS](https://dexie.org) – Ein minimalistischer Wrapper für IndexedDB
-- [Mantine](https://mantine.dev) – Eine voll ausgestattete React-Komponentenbibliothek
+### 3. **Veraltete Browserslist-Datenbank**
+   - Der Fehler deutet darauf hin, dass deine `caniuse-lite` Datenbank veraltet ist, die von `Browserslist` für Kompatibilitätsprüfungen genutzt wird.
+
+   **Lösung:**
+   - Führe den folgenden Befehl aus, um `caniuse-lite` zu aktualisieren:
+     ```bash
+     npx update-browserslist-db@latest
+     ```
+
+### 4. **Fehlende Datei Fehler (`ENOENT`)**
+   - Der kritische Fehler besagt, dass die Datei `Burger.js` aus dem Paket `@mantine/core` fehlt.
+   
+   **Lösung:**
+   - Dies könnte durch eine unvollständige Paketinstallation oder einen Fehler in der verwendeten Version verursacht worden sein. Installiere das Paket erneut:
+     ```bash
+     yarn remove @mantine/core
+     yarn add @mantine/core
+     ```
+   - Stelle sicher, dass du die neueste kompatible Version von `@mantine/core` verwendest.
+
+### 5. **Vorschlag, npm zu aktualisieren**
+   - npm schlägt ein Update auf Version `10.8.3` vor.
+
+   **Lösung:**
+   - Um npm global zu aktualisieren, kannst du den folgenden Befehl ausführen:
+     ```bash
+     npm install -g npm@10.8.3
+     ```
+
+Nachdem du diese Änderungen durchgeführt hast, versuche erneut, den Build-Prozess auszuführen:
+
+```bash
+yarn install && yarn run build && yarn run start
+```
+
+Das sollte die Probleme beheben und dein Projekt erfolgreich zum Laufen bringen.
