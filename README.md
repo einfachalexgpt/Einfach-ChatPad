@@ -1,52 +1,64 @@
-![Chatpad AI](./banner.png)
+![EinfachChatPad AI](./banner.png)
 
-<h1>Chatpad AI</h1>
+<h1 align="center">EinfachChatPad AI</h1>
+<h2 align="center">Premium-Qualitäts-UI für ChatGPT</h2>
+<!-- <p align="center"><a href="https://chatpad.ai">Web App</a> & <a href="https://download.chatpad.ai">Desktop App</a></p> -->
+<p align="center"><a href="https://chatpad.ai">Web App</a> & <a href="https://dl.todesktop.com/230313oyppkw40a">Desktop App</a></p>
 
-<p align="left">
-  <a href="https://twitter.com/willgibs">
-    <img src="https://img.shields.io/twitter/url/https/twitter.com/willgibs.svg?style=social&label=Follow%20%40willgibs" alt="Twitter">
-  </a>
-</p>
+In letzter Zeit gab es einen Anstieg an Benutzeroberflächen für ChatGPT, die zu einem neuen „To-Do-App“-Trend geworden sind, den jeder ausprobieren möchte. EinfachChatPad hebt sich mit einer breiteren Vision ab – es soll die ultimative Schnittstelle für ChatGPT-Nutzer werden.
 
-<h2>ChatGPT UI with Prompt Injections</h2>
-<p><a href="https://chatpad.dev"> Visit Web App</a>
+### ⚡️ Kostenlos und Open-Source
 
-This modified version of Chatpaid AI is tailored for technology-specific prompt injections, making it an ideal tool for designers, developers, data scientists and more.
+Diese App ist kostenlos und der Quellcode ist auf GitHub verfügbar.
 
-### ⚡️ Free and open source
+### 🔒 Datenschutzorientiert
 
-This app is provided for free and the source code is available on GitHub.
+Keine Nachverfolgung, keine Cookies, kein Unsinn. Alle deine Daten werden lokal gespeichert.
 
-### 🔒 Privacy focused
+### ✨ Beste Erfahrung
 
-No tracking, no cookies, no bullshit. All your data is stored locally.
+Mit Liebe und Sorgfalt entwickelt, um die bestmögliche Nutzererfahrung zu bieten.
 
-### ✨ Best experience
+---
 
-Crafted with love and care to provide the best experience possible.
+## Selbsthosting mit Docker
 
-## Deploy on Vercel
+```
+docker run --name einfachchatpad -d -p 8080:80 ghcr.io/deiucanta/chatpad:latest
+```
 
-To deploy the Chatpad AI app on Vercel, follow these steps:
+## Selbsthosting mit Docker und benutzerdefiniertem Konfigurationsfile
 
-1. Fork or clone the repository from GitHub.
-2. Sign up or log in to your Vercel account.
-3. In the Vercel dashboard, click on "Import Project."
-4. Select "Import Git Repository" and provide the URL of your forked or cloned repository.
-5. Configure the project settings:
-   - Set the "Build Command" to `npm run build`
-   - Set the "Output Directory" to `dist`
-   - Set the "Framework Preset" to Parcel.
-6. Click "Deploy" to start the deployment process.
+```
+docker run --name einfachchatpad -d -v `pwd`/config.json:/usr/share/nginx/html/config.json -p 8080:80 ghcr.io/deiucanta/chatpad:latest
+```
 
-Once the deployment is complete, you'll receive a link to the live site.
+## Ein-Klick-Bereitstellungen
 
-## Give Feedback
+<!-- Easypanel -->
+[![Deploy auf Easypanel](https://easypanel.io/img/deploy-on-easypanel-40.svg)](https://easypanel.io/docs/templates/chatpad)
 
-If you have any feedback, feature requests or bug reports, message [feedback@chatpad.dev](mailto:feedback@chatpad.dev).
+<!-- Netlify -->
+[![Deploy auf Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/deiucanta/chatpad)
+
+<!-- Vercel -->
+[![Mit Vercel bereitstellen](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdeiucanta%2Fchatpad&project-name=einfachchatpad&repository-name=einfachchatpad-vercel&demo-title=EinfachChatPad&demo-description=Die%20Offizielle%20EinfachChatPad%20Website&demo-url=https%3A%2F%2Fchatpad.ai&demo-image=https%3A%2F%2Fraw.githubusercontent.com%2Fdeiucanta%2Fchatpad%2Fmain%2Fbanner.png)
+
+<!-- Railway -->
+[![Deploy auf Railway](https://railway.app/button.svg)](https://railway.app/template/Ak6DUw?referralCode=9M8r62)
+
+[![Deploy auf DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/deiucanta/chatpad/tree/main)
+
+## Feedback geben
+
+Wenn du Funktionswünsche oder Fehlerberichte hast, besuche [feedback.chatpad.ai](https://feedback.chatpad.ai).
+
+## Mitwirken
+
+Dies ist eine React.js-Anwendung. Klone das Projekt, führe `npm i` und `npm start` aus, und schon bist du startklar.
 
 ## Credits
 
-- [Andrei Canta](https://github.com/deiucanta) - The original creator of the Chatpad interface
-- [DexieJS](https://dexie.org) - A minimalistic wrapper for IndexedDB
-- [Mantine](https://mantine.dev) - A fully featured React component library
+- [ToDesktop](https://todesktop.com) – Eine einfache Möglichkeit, deine Web-App in eine schöne Desktop-App zu verwandeln
+- [DexieJS](https://dexie.org) – Ein minimalistischer Wrapper für IndexedDB
+- [Mantine](https://mantine.dev) – Eine voll ausgestattete React-Komponentenbibliothek
